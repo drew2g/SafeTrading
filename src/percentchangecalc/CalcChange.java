@@ -11,10 +11,16 @@ package percentchangecalc;
  */
 public class CalcChange {
     
-    public static double calcSellPoint(double begin, int percent){
+    public static double calcSellPoint(double begin, double percent){
         
         double output = 0;
-        output = begin + (begin * percent/100);
+        output = begin + (begin * percent);
+        return output;
+    }
+    public static double calcSellPoint(double begin, double percent, double fee)
+    {
+        double mid = calcSellPoint(begin,percent);
+        double output = processFee(mid, fee);
         return output;
     }
     
@@ -22,6 +28,12 @@ public class CalcChange {
         
         double output = 0;
         output = -(percent - begin);
+        return output;
+    }
+    
+    public static double processFee(double begin, double percent){
+        double output = 0;
+        output = begin + begin*percent;
         return output;
     }
     
